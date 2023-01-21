@@ -37,7 +37,7 @@ select product, product_code,manufacturing_cost from cte
 where r1=1 or r2=1;
 
 q-6
-SELECT dc.customer_code,customer, round(avg(pre_invoice_discount_pct),2) as average_discount_percentage 
+SELECT dc.customer_code,customer, round(avg(pre_invoice_discount_pct)*100,2) as average_discount_percentage 
 FROM fact_pre_invoice_deductions fp join dim_customer dc on fp.customer_code=dc.customer_code
 join fact_sales_monthly fs on fp.customer_code=fs.customer_code
 where fs.fiscal_year=2021
